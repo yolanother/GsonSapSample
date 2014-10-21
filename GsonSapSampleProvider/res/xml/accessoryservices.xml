@@ -27,12 +27,12 @@
 <resources>
     <application name="GsonSapSampleProvider">
     <serviceProfile
-        name="gsonsapsample"
+        name = "gsonsapsample"
+        id = "/system/gsonsapsample"
         role="provider"
         serviceImpl="com.example.gsonsapsample.GsonSapSampleService"
-        id="/system/gsonsapsample"
         version="2.0"
-        serviceLimit="ONE_ACCESSORY"
+        serviceLimit="ONE_PEERAGENT"
 		serviceTimeout="30">
         <supportedTransports>
             <transport type="TRANSPORT_BT"/>
