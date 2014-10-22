@@ -25,24 +25,22 @@
 <!ATTLIST serviceChannel reliability (enable | disable | ENABLE | DISABLE ) #REQUIRED>
 ]>
 <resources>
-    <application name="GsonSapSampleProvider">
+    <application name="GsonSapSample">
     <serviceProfile
-        name = "gsonsapsample"
-        id = "/system/gsonsapsample"
-        role="provider"
-        serviceImpl="com.example.gsonsapsample.GsonSapSampleService"
-        version="2.0"
-        serviceLimit="ONE_PEERAGENT"
-		serviceTimeout="30">
-        <supportedTransports>
-            <transport type="TRANSPORT_BT"/>
-		</supportedTransports>      
-        <serviceChannel
-            id="104"
-            dataRate = "low" 
-			priority = "low" 
-			reliability= "enable">
-        </serviceChannel>
+         serviceImpl="com.example.gsonsapsample.GsonSapSampleService"
+         role = "provider"
+                      name = "GsonSapSample"
+                      id = "/system/gsonsapsample"
+                      version = "2.0"
+                      serviceLimit = "ONE_PEERAGENT"
+                      serviceTimeout = "30">
+         <supportedTransports>
+            <transport type = "TRANSPORT_BT"/>
+         </supportedTransports>
+         <serviceChannel id = "104"
+                         dataRate = "high"
+                         priority = "low"
+                         reliability = "enable"/>
     </serviceProfile>
     </application>
 </resources>

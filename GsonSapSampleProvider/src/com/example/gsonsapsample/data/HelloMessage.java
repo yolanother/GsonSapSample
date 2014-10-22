@@ -6,5 +6,6 @@ public class HelloMessage {
 
     public HelloMessage(String message) {
         this.message = message;
+        this.timestamp = System.currentTimeMillis();
     }
 }
