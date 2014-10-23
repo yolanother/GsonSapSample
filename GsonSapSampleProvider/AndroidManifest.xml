@@ -7,12 +7,12 @@
     <uses-sdk
         android:minSdkVersion="19"
         android:targetSdkVersion="20" />
-    
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
-	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-	<uses-permission android:name="com.samsung.accessory.permission.ACCESSORY_FRAMEWORK" />
-	<uses-permission android:name="com.samsung.wmanager.APP" />
-	<uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="com.samsung.accessory.permission.ACCESSORY_FRAMEWORK" />
+    <uses-permission android:name="com.samsung.wmanager.APP" />
+    <uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
 
     <application
         android:allowBackup="true"
@@ -34,10 +34,20 @@
                 <action android:name="android.accessory.device.action.REGISTER_AFTER_INSTALL" />
             </intent-filter>
         </receiver>
-        
+
         <meta-data
             android:name="AccessoryServicesLocation"
             android:value="/res/xml/accessoryservices.xml" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
