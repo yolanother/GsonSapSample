@@ -10,6 +10,7 @@ import com.doubtech.gear.gsonsapprovider.GenericGsonSapRequest;
 import com.doubtech.gear.gsonsapprovider.GsonSapProvider;
 import com.doubtech.gear.gsonsapprovider.GsonSapProvider.JsonSapProviderConnection.Requester;
 import com.example.gsonsapsample.data.HelloMessage;
+import com.example.gsonsapsample.data.UnregisteredMessage;
 
 public class GsonSapSampleService extends GsonSapProvider {
     public static final String TAG = GsonSapSampleService.class.getSimpleName();
@@ -28,7 +29,7 @@ public class GsonSapSampleService extends GsonSapProvider {
             HelloMessage message = (HelloMessage) data;
             Toast.makeText(this, message.message, Toast.LENGTH_LONG).show();
             try {
-                requester.reply(REQ_INIT_HELLO, new HelloMessage("Hello from " + Build.DEVICE));
+                requester.reply(new HelloMessage("Hello from " + Build.DEVICE));
             } catch (IOException e) {
                 Log.e(TAG, e.getMessage());
             }
@@ -47,6 +48,7 @@ public class GsonSapSampleService extends GsonSapProvider {
         try {
             send(new HelloMessage("I see you have connected " + device), peerId);
             send(new HelloMessage(device + " has connected."));
+            send(new UnregisteredMessage("This message isn't registered"));
         } catch (IOException e) {
             Log.e(TAG, e.getMessage());
         }

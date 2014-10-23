@@ -2,9 +2,13 @@ var gSap;
 
 var REQ_INIT_HELLO = "req-initialize";
 
+function log(message) {
+	$('#textbox').html($('#textbox').html() + message + "<br/>\n");
+}
+
 function onConnected() {
 	// TODO Handle any post connection initializations needed
-	alert("Connected to phone!");
+	log("Connected to phone!");
 	var data = {
 			'timestamp': Date.now(),
 			'message': "Hello from your Gear!"
@@ -16,13 +20,15 @@ function onConnected() {
 
 function onConnectionFailed(error) {
 	// TODO Handle connection failure
-	alert("Connection to phone failed.");
+	log("Connection to phone failed: " + error);
 }
 
 function onDataReceived(type, data) {
 	// TODO Process received data
 	console.log("Received: " + type);
 	console.log(JSON.stringify(data));
+	log("<strong>" + type + "</strong>\n" + 
+			"<pre>" + JSON.stringify(data) + "</pre>\n");
 }
 
 $(window).load(function(){
@@ -33,10 +39,10 @@ $(window).load(function(){
 	
 	
 	$('.contents').on("click", function(){
-		$('#textbox').html($('#textbox').html() == "Basic" ? "Sample" : "Basic");				
+		$('#textbox').html("");				
 	});
 
-	var providerAppName = "GsonSapSampleProvider";
+	var providerAppName = "GsonSapSample";
 	var channel = 104;
 	gSap = new JsonSap(providerAppName, channel);
 	gSap.init(onConnected, onConnectionFailed, onDataReceived);

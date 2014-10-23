@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-   <application name = "GsonSapSampleConsumer">
+   <application name = "GsonSapSample">
       <serviceProfile role = "consumer"
-                      name = "gsonsapsample"
+                      name = "GsonSapSample"
                       id = "/system/gsonsapsample"
                       version = "2.0"
                       serviceLimit = "ONE_PEERAGENT"
