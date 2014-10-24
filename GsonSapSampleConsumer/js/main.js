@@ -45,5 +45,5 @@ $(window).load(function(){
     var providerAppName = "GsonSapSample";
     var channel = 104;
     gSap = new JsonSap(providerAppName, channel);
-    gSap.init(onConnected, onConnectionFailed, onDataReceived);
+    gSap.connect(onConnected, onConnectionFailed, onDataReceived);
 });

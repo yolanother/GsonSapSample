@@ -9,9 +9,13 @@ import android.widget.Toast;
 import com.doubtech.gear.gsonsapprovider.GenericGsonSapRequest;
 import com.doubtech.gear.gsonsapprovider.GsonSapProvider;
 import com.doubtech.gear.gsonsapprovider.GsonSapProvider.JsonSapProviderConnection.Requester;
+import com.doubtech.gear.gsonsapprovider.annotations.Channel;
+import com.doubtech.gear.gsonsapprovider.annotations.PreventUnregistered;
 import com.example.gsonsapsample.data.HelloMessage;
 import com.example.gsonsapsample.data.UnregisteredMessage;
 
+@Channel(104)
+@PreventUnregistered
 public class GsonSapSampleService extends GsonSapProvider {
     public static final String TAG = GsonSapSampleService.class.getSimpleName();
 
@@ -30,6 +34,9 @@ public class GsonSapSampleService extends GsonSapProvider {
             Toast.makeText(this, message.message, Toast.LENGTH_LONG).show();
             try {
                 requester.reply(new HelloMessage("Hello from " + Build.DEVICE));
+
+                // This message will only be sent if there is no PreventUnregistered annotation
+                requester.reply(new UnregisteredMessage("Again, hello from " + Build.DEVICE));
             } catch (IOException e) {
                 Log.e(TAG, e.getMessage());
             }
